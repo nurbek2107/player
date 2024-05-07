@@ -1,0 +1,136 @@
+html {
+    height: 100%;
+    background: #223;
+    display: grid;
+    place-items: center;
+}
+
+.image{
+    text-align: center;
+}
+
+
+
+   .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    gap: 50px;
+   }
+button{
+    cursor: pointer;
+    font-size: 2rem;
+    border:none;
+    background-color:transparent;
+    color:aliceblue;
+}
+
+button:nth-child(1){
+    font-size: 1.5rem;
+}
+button:nth-child(3) {
+    font-size: 1.5rem;
+}
+
+@keyframes spinner{
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+   .cover {
+       margin-top: 20px;
+       width: 200px;
+       height: 200px;
+       object-fit: cover;
+       border-radius: 50%;
+       animation-name: spinner;
+       animation-duration: 10s;
+       animation-timing-function: linear;
+       animation-iteration-count: infinite;
+       animation-play-state: paused;
+   }
+.image  .play .cover{
+    animation-play-state: running;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   .block {
+    margin: 0px 20px 0px 20px;
+       position: relative;
+       border-radius: 8px;
+       width: 350px;
+       height: 550px;
+       background: linear-gradient(0deg, #000000, #272727);
+   }
+.block:before,
+.block:after {
+    content: ' ';
+    position: absolute;
+    border-radius: 8px;
+    left: -2.5px;
+    top: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
+            #0000ff, #00ff00, #ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 5px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.block:after {
+    filter: blur(50px);
+}
