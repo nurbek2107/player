@@ -78,8 +78,11 @@ html {
     background-color: transparent;
     color: aliceblue;
     border-bottom: 1px solid #ffffff57;
+    transition: all .3s ease-in;
 }
-
+.card button:hover{
+    color:rgb(5, 181, 105);
+}
 
 
 
@@ -125,7 +128,7 @@ html {
     top: -2px;
     background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
             #0000ff, #00ff00, #ffff00, #ff0000);
-    background-size: 400%;
+    background-size: 300%;
     width: calc(100% + 5px);
     height: calc(100% + 4px);
     z-index: -1;

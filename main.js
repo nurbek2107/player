@@ -62,7 +62,7 @@ document.getElementById('Another-Love').addEventListener('click', () => {
     coverEl.src = './img/Another-Love.gif';
     if (track) {
         audioEl.play()
-       
+        imageEL.classList.add('play');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
 
@@ -74,7 +74,7 @@ document.getElementById('MOE-MORE').addEventListener('click', () => {
     audio.play();
     if (track) {
         audioEl.play()
-
+        imageEL.classList.add('play');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
 });
@@ -85,6 +85,7 @@ document.getElementById('MIX-Long').addEventListener('click', () => {
     audio.play();
     if (track) {
         audioEl.play()
+        imageEL.classList.add('play');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
 });
