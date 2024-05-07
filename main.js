@@ -6,6 +6,7 @@ const coverEl = document.getElementById('cover');
 const AnotherEl = document.getElementById('Another-Love');
 const MOEEl = document.getElementById('MOE-MORE');
 const MIXEL = document.getElementById('MIX-Long')
+const imageEL = document.getElementById('cover')
 
 
 const tracks = ['Another-Love', 'MOE-MORE','MIX-Long-Version']
@@ -20,13 +21,16 @@ chargeTrack(currentTrack);
 
 let track=true;
 playBtn.addEventListener('click', () => {
-    if (track) {
-        audioEl.play()
-        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
-    }
-    else {
+    if (imageEL.classList.contains('play')) {
+        imageEL.classList.remove('play');
         audioEl.pause()
         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
+    }
+    else {
+        audioEl.play()
+        imageEL.classList.add('play');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+
     }
     track = !track;
 });
@@ -58,6 +62,7 @@ document.getElementById('Another-Love').addEventListener('click', () => {
     coverEl.src = './img/Another-Love.gif';
     if (track) {
         audioEl.play()
+       
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
 
@@ -69,6 +74,7 @@ document.getElementById('MOE-MORE').addEventListener('click', () => {
     audio.play();
     if (track) {
         audioEl.play()
+
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
 });

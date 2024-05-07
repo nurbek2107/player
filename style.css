@@ -45,15 +45,21 @@ html {
     }
 }
 
-.cover {
+.image .cover {
     margin-top: 20px;
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    animation: spinner 10s linear infinite;
+    animation-name:spinner;
+    animation-duration:20s;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    animation-play-state:paused;
 }
-
+.image .cover.play{
+    animation-play-state: running;
+}
 
 .card{
     height: 180px;
