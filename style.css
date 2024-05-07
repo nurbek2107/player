@@ -10,7 +10,6 @@ html {
 .image {
     text-align: center;
 }
-
 .button {
     display: flex;
     align-items: center;
@@ -18,7 +17,6 @@ html {
     margin-top: 70px;
     gap: 50px;
 }
-
 .button button {
     cursor: pointer;
     font-size: 2rem;
@@ -33,7 +31,6 @@ html {
 .button button:nth-child(1) {
     font-size: 1.5rem;
 }
-
 .button button:nth-child(3) {
     font-size: 1.5rem;
 }
@@ -42,12 +39,10 @@ html {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
 }
-
 .image .cover {
     margin-top: 20px;
     width: 200px;
@@ -63,7 +58,6 @@ html {
 .image .cover.play{
     animation-play-state: running;
 }
-
 .card{
     height: 220px;
     overflow: scroll;
@@ -90,7 +84,6 @@ box-shadow: 0 0 32px 8px #c9baba28;
 .card button:hover{
     color:aliceblue;
 }
-
 .volume{
     text-align: center;
     margin-top: 20px;
@@ -98,12 +91,10 @@ box-shadow: 0 0 32px 8px #c9baba28;
 .changeVolume{
     width: 80%;
 }
-
 input[type='range'] {
     -webkit-appearance: none !important;
     height: 1px;
 }
-
 input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     background: rgb(255, 255, 255);
@@ -113,29 +104,6 @@ box-shadow: 0 0 32px 8px #e3dede7f;
     cursor: ew-resize;
     width: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .block {
     margin: 0px 20px 0px 20px;
     position: relative;
@@ -144,7 +112,6 @@ box-shadow: 0 0 32px 8px #e3dede7f;
     height: 550px;
     background: linear-gradient(180deg, #000000f1, #272727d6);
 }
-
 .block:before,
 .block:after {
     content: ' ';
@@ -152,29 +119,24 @@ box-shadow: 0 0 32px 8px #e3dede7f;
     border-radius: 8px;
     left: -2.5px;
     top: -2px;
-    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
-            #0000ff, #00ff00, #ffff00, #ff0000);
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,#0000ff, #00ff00, #ffff00, #ff0000);
     background-size: 300%;
     width: calc(100% + 5px);
     height: calc(100% + 4px);
     z-index: -1;
     animation: steam 20s linear infinite;
 }
-
 @keyframes steam {
     0% {
         background-position: 0 0;
     }
-
     50% {
         background-position: 400% 0;
     }
-
     100% {
         background-position: 0 0;
     }
 }
-
 .block:after {
     filter: blur(50px);
 }
