@@ -67,7 +67,7 @@ html {
 .card{
     height: 220px;
     overflow: scroll;
-    margin: 60px auto;
+    margin: 28px auto;
     border-radius:8px;
 box-shadow: 0 0 32px 8px #c9baba28;
     gap: 10px;
@@ -91,9 +91,28 @@ box-shadow: 0 0 32px 8px #c9baba28;
     color:aliceblue;
 }
 
+.volume{
+    text-align: center;
+    margin-top: 20px;
+}
+.changeVolume{
+    width: 80%;
+}
 
+input[type='range'] {
+    -webkit-appearance: none !important;
+    height: 1px;
+}
 
-
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: rgb(255, 255, 255);
+box-shadow: 0 0 32px 8px #e3dede7f;
+    border-radius:50%;
+    height: 20px;
+    cursor: ew-resize;
+    width: 20px;
+}
 
 
 

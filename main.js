@@ -7,7 +7,7 @@ const AnotherEl = document.getElementById('Another-Love');
 const MOEEl = document.getElementById('MOE-MORE');
 const MIXEL = document.getElementById('MIX-Long')
 const imageEL = document.getElementById('cover')
-
+const changeVolume = document.getElementById('changeVolume');
 
 const tracks = ['Another-Love', 'MOE-MORE','MIX-Long-Version']
 let currentTrack = 0;
@@ -89,3 +89,7 @@ document.getElementById('MIX-Long').addEventListener('click', () => {
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
 });
+
+changeVolume.addEventListener('input', (volum) => { 
+audioEl.volume = volum.target.value;
+})
