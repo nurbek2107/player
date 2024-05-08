@@ -60,33 +60,51 @@ forwardEL.addEventListener('click', () => {
 document.getElementById('Another-Love').addEventListener('click', () => {
     audio.src = './music/Another-Love.mp3';
     coverEl.src = './img/Another-Love.gif';
-    if (track) {
+    if (imageEL.classList.contains('play')) {
+
         audioEl.play()
         imageEL.classList.add('play');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
     }
+    else {
+        imageEL.classList.remove('play');
+        audioEl.pause()
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
 
+    }
 });
 
 document.getElementById('MOE-MORE').addEventListener('click', () => {
     audio.src = './music/MOE-MORE.mp3';
     coverEl.src = './img/MOE-MORE.gif';
-    audio.play();
-    if (track) {
+    if (imageEL.classList.contains('play')) {
+
         audioEl.play()
         imageEL.classList.add('play');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+    }
+    else {
+        imageEL.classList.remove('play');
+        audioEl.pause()
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
+
     }
 });
 
 document.getElementById('MIX-Long').addEventListener('click', () => {
     audio.src = './music/MIX-Long-Version.mp3';
     coverEl.src = './img/MIX-Long-Version.gif';
-    audio.play();
-    if (track) {
+    if (imageEL.classList.contains('play')) {
+
         audioEl.play()
         imageEL.classList.add('play');
         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+    }
+    else {
+        imageEL.classList.remove('play');
+        audioEl.pause()
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
+
     }
 });
 
