@@ -9,9 +9,25 @@ const changeVolume = document.getElementById('changeVolume');
 const coverEl = document.getElementById('cover');
 const startSpan = document.getElementById('start');
 const timeSpan = document.getElementById('time');
+const shuffleButton = document.getElementById('shuffle');
+const volumeEL = document.getElementById('void');
+
+
+volumeEL.addEventListener('click', () => {
+    if (isPlaying) {
+        changeVolume.classList.remove('display_1');
+    } else {
+        changeVolume.classList.add('display_1');
+    }
+    isPlaying = !isPlaying;
+});
+
 
 const tracks = ['Another-Love', 'MOE-MORE', 'MIX-Long-Version'];
 let currentTrack = 0;
+
+
+
 
 const chargeTrack = (index) => {
     coverEl.src = `./img/${tracks[index]}.gif`;
@@ -79,6 +95,24 @@ playlistItems.forEach((item, index) => {
     });
 });
 
+shuffleButton.addEventListener('click', shuffle);
+
+function shuffle() {
+    let randomIndex = Math.floor(Math.random() * tracks.length);
+    let randomMusic = tracks[randomIndex];
+
+    while (audioEl.src.endsWith(`${randomMusic}.mp3`)) {
+        randomIndex = Math.floor(Math.random() * tracks.length);
+        randomMusic = tracks[randomIndex];
+    }
+
+    audioEl.src = `./music/${randomMusic}.mp3`;
+    coverEl.src = `./img/${randomMusic}.gif`;
+
+    audioEl.play();
+    coverEl.classList.add('play');
+    playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+}
 
 
 changeVolume.addEventListener('input', (d) => {
@@ -108,18 +142,19 @@ function updateTimer(currentTime, duration) {
     const durationMinutes = Math.floor(duration / 60);
     const durationSeconds = Math.floor(duration % 60);
 
-    let durationTimeString;
+    let times;
     if (isNaN(duration)) {
-        durationTimeString = '00:00';
+        times = '00:00';
     } else {
-        durationTimeString = `${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
+        times = `${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
     }
 
     const currentTimeString = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}`;
 
     startSpan.textContent = currentTimeString;
-    timeSpan.textContent = durationTimeString;
+    timeSpan.textContent = times;
 }
+
 
 
 

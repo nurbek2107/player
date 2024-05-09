@@ -15,11 +15,11 @@ html {
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    gap: 50px;
+    gap: 30px;
 }
 .button button {
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border: none;
     background-color: transparent;
     color: rgb(190, 190, 190);
@@ -27,12 +27,10 @@ html {
 }
 .button button:hover{
     color: aliceblue;
-}
-.button button:nth-child(1) {
-    font-size: 1.5rem;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 2px 2px 3px rgba(206, 89, 55, 0);
 }
 .button button:nth-child(3) {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 @keyframes spinner {
@@ -83,6 +81,7 @@ box-shadow: 0 0 32px 8px #c9baba28;
 }
 .card button:hover{
     color:aliceblue;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 2px 2px 3px rgba(206, 89, 55, 0);
 }
 .volume{
     text-align: center;
@@ -99,29 +98,36 @@ box-shadow: 0 0 32px 8px #c9baba28;
     .time-container{
         display: flex;
         align-items:center;
-        margin-top: 40px;
+        margin-top: -20px;
         justify-content:space-around;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color:#fff;
         font-size: 1rem;
     }
 }
 
+.display_1 {
+    display: none;
+}
 
 .progress{
     margin: 30px auto;
     height: 6px;
     cursor: pointer;
-    background-color: rgb(185, 182, 182);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 32px 8px #e3dede7f;
     border-radius: 1rem;
     width: 80%;
 }
 
 .progress-cotainer{
-    background-color: red;
+    background-color: rgb(0, 153, 255);
+    
     width: 0%;
     height: inherit;
-    border-radius: inherit;
+    border-radius: 1rem;
 }
+
 
 .time-container {
     display: flex;
@@ -173,7 +179,14 @@ input[type='range']::-webkit-slider-thumb {
     border-radius: 8px;
     left: -2.5px;
     top: -2px;
-    background: linear-gradient(45deg, #ffffff, #0000ff, #00ff00, #ffff00, #ff0000, #ffffff,#0000ff, #00ff00, #ffff00, #ff0000);
+background: linear-gradient(45deg,
+            #0099ff,
+            #ffffff,
+            #0099ff,
+            #ffffff,
+            #0099ff,
+            #ffffff,
+            #0099ff);
     background-size: 300%;
     width: calc(100% + 5px);
     height: calc(100% + 4px);
