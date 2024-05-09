@@ -107,23 +107,7 @@ box-shadow: 0 0 32px 8px #c9baba28;
 }
 
 
-
-
-
-
-.progres-and-time-container {
-    .time-container {
-        display: flex;
-        align-items: center;
-        margin-top: -20px;
-        justify-content: space-around;
-        color: #fff;
-        font-size: 1rem;
-    }
-}
-
-
-.progress-cotainer {
+.progress{
     margin: 30px auto;
     height: 6px;
     cursor: pointer;
@@ -132,7 +116,7 @@ box-shadow: 0 0 32px 8px #c9baba28;
     width: 80%;
 }
 
-.progress{
+.progress-cotainer{
     background-color: red;
     width: 0%;
     height: inherit;

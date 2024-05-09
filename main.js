@@ -4,10 +4,11 @@ const backwardEL = document.getElementById('backward');
 const forwardEL = document.getElementById('forward');
 const pEL = document.getElementById('text1');
 const progressEl = document.getElementById('progress');
-const progresscEle = document.getElementById('progress-container');
+const progressEle = document.getElementById('progress-container');
 const changeVolume = document.getElementById('changeVolume');
 const coverEl = document.getElementById('cover');
-
+const startSpan = document.getElementById('start');
+const timeSpan = document.getElementById('time');
 
 const tracks = ['Another-Love', 'MOE-MORE', 'MIX-Long-Version'];
 let currentTrack = 0;
@@ -78,63 +79,95 @@ playlistItems.forEach((item, index) => {
     });
 });
 
-audioEl.addEventListener('timeupdate', (e) => {
-    const { duration, currentTime } = e.target;
-    const progressPercent = (currentTime / duration) * 100;
-    progressEl.style.width = `${progressPercent}%`;
-});
+
 
 changeVolume.addEventListener('input', (d) => {
     audioEl.volume = d.target.value;
 });
 
 
+audioEl.addEventListener('timeupdate', (e) => {
+    const { duration, currentTime } = e.target;
+    const progressPercent = (currentTime / duration) * 100;
+    progressEle.style.width = `${progressPercent}%`;
+    updateTimer(currentTime, duration);
+});
+
+progressEl.addEventListener('click', (e) => {
+    const width = progressEl.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audioEl.duration;
+    audioEl.currentTime = (clickX / width) * duration;
+});
+
+audioEl.addEventListener('ended', nextTrack);
+
+function updateTimer(currentTime, duration) {
+    const currentMinutes = Math.floor(currentTime / 60);
+    const currentSeconds = Math.floor(currentTime % 60);
+    const durationMinutes = Math.floor(duration / 60);
+    const durationSeconds = Math.floor(duration % 60);
+
+    let durationTimeString;
+    if (isNaN(duration)) {
+        durationTimeString = '00:00';
+    } else {
+        durationTimeString = `${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
+    }
+
+    const currentTimeString = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}`;
+
+    startSpan.textContent = currentTimeString;
+    timeSpan.textContent = durationTimeString;
+}
 
 
 
 
 
-// document.getElementById('Another-Love').addEventListener('click', () => {
-//     audioEl.src = './music/Another-Love.mp3';
-//     coverEl.src = './img/Another-Love.gif';
-//     if (coverEl.classList.contains('play')) {
-//         audioEl.play();
-//         coverEl.classList.add('play');
-//         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-//     } else {
-//         coverEl.classList.remove('play');
-//         audioEl.pause();
-//         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-//     }
-// });
 
-// document.getElementById('MOE-MORE').addEventListener('click', () => {
-//     audioEl.src = './music/MOE-MORE.mp3';
-//     coverEl.src = './img/MOE-MORE.gif';
-//     if (coverEl.classList.contains('play')) {
-//         audioEl.play();
-//         coverEl.classList.add('play');
-//         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-//     } else {
-//         coverEl.classList.remove('play');
-//         audioEl.pause();
-//         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-//     }
-// });
 
-// document.getElementById('MIX-Long').addEventListener('click', () => {
-//     audioEl.src = './music/MIX-Long-Version.mp3';
-//     coverEl.src = './img/MIX-Long-Version.gif';
-//     if (coverEl.classList.contains('play')) {
-//         audioEl.play();
-//         coverEl.classList.add('play');
-//         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-//     } else {
-//         coverEl.classList.remove('play');
-//         audioEl.pause();
-//         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-//     }
-// });
+document.getElementById('Another-Love').addEventListener('click', () => {
+    audioEl.src = './music/Another-Love.mp3';
+    coverEl.src = './img/Another-Love.gif';
+    if (coverEl.classList.contains('play')) {
+        audioEl.play();
+        coverEl.classList.add('play');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+        coverEl.classList.remove('play');
+        audioEl.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+});
+
+document.getElementById('MOE-MORE').addEventListener('click', () => {
+    audioEl.src = './music/MOE-MORE.mp3';
+    coverEl.src = './img/MOE-MORE.gif';
+    if (coverEl.classList.contains('play')) {
+        audioEl.play();
+        coverEl.classList.add('play');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+        coverEl.classList.remove('play');
+        audioEl.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+});
+
+document.getElementById('MIX-Long').addEventListener('click', () => {
+    audioEl.src = './music/MIX-Long-Version.mp3';
+    coverEl.src = './img/MIX-Long-Version.gif';
+    if (coverEl.classList.contains('play')) {
+        audioEl.play();
+        coverEl.classList.add('play');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+        coverEl.classList.remove('play');
+        audioEl.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+});
 
 
 
