@@ -2,14 +2,14 @@ const playBtn = document.getElementById('play');
 const audioEl = document.getElementById('audio');
 const backwardEL = document.getElementById('backward');
 const forwardEL = document.getElementById('forward');
-const coverEl = document.getElementById('cover');
-const AnotherEl = document.getElementById('Another-Love');
-const MOEEl = document.getElementById('MOE-MORE');
-const MIXEL = document.getElementById('MIX-Long')
-const imageEL = document.getElementById('cover')
+const pEL = document.getElementById('text1');
+const progressEl = document.getElementById('progress');
+const progresscEle = document.getElementById('progress-container');
 const changeVolume = document.getElementById('changeVolume');
+const coverEl = document.getElementById('cover');
 
-const tracks = ['Another-Love', 'MOE-MORE','MIX-Long-Version']
+
+const tracks = ['Another-Love', 'MOE-MORE', 'MIX-Long-Version'];
 let currentTrack = 0;
 
 const chargeTrack = (index) => {
@@ -19,95 +19,122 @@ const chargeTrack = (index) => {
 
 chargeTrack(currentTrack);
 
-let track=true;
-playBtn.addEventListener('click', () => {
-    if (imageEL.classList.contains('play')) {
-        imageEL.classList.remove('play');
-        audioEl.pause()
-        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
+let isPlaying = false;
+
+function togglePlay() {
+    if (isPlaying) {
+        coverEl.classList.remove('play');
+        audioEl.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    } else {
+        coverEl.classList.add('play');
+        audioEl.play();
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     }
-    else {
-        audioEl.play()
-        imageEL.classList.add('play');
-        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+    isPlaying = !isPlaying;
+}
 
-    }
-    track = !track;
-});
+playBtn.addEventListener('click', togglePlay);
 
-
-const plas = () => {
+function nextTrack() {
+    coverEl.classList.add('play');
     currentTrack = (currentTrack + 1) % tracks.length;
     chargeTrack(currentTrack);
-    audioEl.play();
-    playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+    if (coverEl.classList.contains('play')) {
+        audioEl.play();
+        coverEl.classList.add('play');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+        coverEl.classList.remove('play');
+        audioEl.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
 }
-const minus = () => {
-    currentTrack = (currentTrack - 1 + tracks.length ) % tracks.length;
+
+function prevTrack() {
+    coverEl.classList.add('play');
+    currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
     chargeTrack(currentTrack);
-    audioEl.play();
-    playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+    if (coverEl.classList.contains('play')) {
+        audioEl.play();
+        coverEl.classList.add('play');
+        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+        coverEl.classList.remove('play');
+        audioEl.pause();
+        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
 }
 
-backwardEL.addEventListener('click', () => {
-    plas();
+backwardEL.addEventListener('click', prevTrack);
+forwardEL.addEventListener('click', nextTrack);
+
+const playlistItems = document.querySelectorAll('.playlist li');
+playlistItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        currentTrack = index;
+        chargeTrack(currentTrack);
+        togglePlay();
+    });
 });
 
-forwardEL.addEventListener('click', () => {
-    minus();
+audioEl.addEventListener('timeupdate', (e) => {
+    const { duration, currentTime } = e.target;
+    const progressPercent = (currentTime / duration) * 100;
+    progressEl.style.width = `${progressPercent}%`;
 });
 
-document.getElementById('Another-Love').addEventListener('click', () => {
-    audio.src = './music/Another-Love.mp3';
-    coverEl.src = './img/Another-Love.gif';
-    if (imageEL.classList.contains('play')) {
-
-        audioEl.play()
-        imageEL.classList.add('play');
-        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
-    }
-    else {
-        imageEL.classList.remove('play');
-        audioEl.pause()
-        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
-
-    }
+changeVolume.addEventListener('input', (d) => {
+    audioEl.volume = d.target.value;
 });
 
-document.getElementById('MOE-MORE').addEventListener('click', () => {
-    audio.src = './music/MOE-MORE.mp3';
-    coverEl.src = './img/MOE-MORE.gif';
-    if (imageEL.classList.contains('play')) {
 
-        audioEl.play()
-        imageEL.classList.add('play');
-        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
-    }
-    else {
-        imageEL.classList.remove('play');
-        audioEl.pause()
-        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
 
-    }
-});
 
-document.getElementById('MIX-Long').addEventListener('click', () => {
-    audio.src = './music/MIX-Long-Version.mp3';
-    coverEl.src = './img/MIX-Long-Version.gif';
-    if (imageEL.classList.contains('play')) {
 
-        audioEl.play()
-        imageEL.classList.add('play');
-        playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
-    }
-    else {
-        imageEL.classList.remove('play');
-        audioEl.pause()
-        playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
 
-    }
-});
 
-changeVolume.addEventListener('input', (volum) => { 
-audioEl.volume = volum.target.value;
-})
+// document.getElementById('Another-Love').addEventListener('click', () => {
+//     audioEl.src = './music/Another-Love.mp3';
+//     coverEl.src = './img/Another-Love.gif';
+//     if (coverEl.classList.contains('play')) {
+//         audioEl.play();
+//         coverEl.classList.add('play');
+//         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+//     } else {
+//         coverEl.classList.remove('play');
+//         audioEl.pause();
+//         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+//     }
+// });
+
+// document.getElementById('MOE-MORE').addEventListener('click', () => {
+//     audioEl.src = './music/MOE-MORE.mp3';
+//     coverEl.src = './img/MOE-MORE.gif';
+//     if (coverEl.classList.contains('play')) {
+//         audioEl.play();
+//         coverEl.classList.add('play');
+//         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+//     } else {
+//         coverEl.classList.remove('play');
+//         audioEl.pause();
+//         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+//     }
+// });
+
+// document.getElementById('MIX-Long').addEventListener('click', () => {
+//     audioEl.src = './music/MIX-Long-Version.mp3';
+//     coverEl.src = './img/MIX-Long-Version.gif';
+//     if (coverEl.classList.contains('play')) {
+//         audioEl.play();
+//         coverEl.classList.add('play');
+//         playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+//     } else {
+//         coverEl.classList.remove('play');
+//         audioEl.pause();
+//         playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+//     }
+// });
+
+
+

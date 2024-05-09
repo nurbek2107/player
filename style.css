@@ -14,7 +14,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 10px;
     gap: 50px;
 }
 .button button {
@@ -91,6 +91,71 @@ box-shadow: 0 0 32px 8px #c9baba28;
 .changeVolume{
     width: 80%;
 }
+
+
+
+.progres-and-time-container{
+    
+    .time-container{
+        display: flex;
+        align-items:center;
+        margin-top: 40px;
+        justify-content:space-around;
+        color:#fff;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+.progres-and-time-container {
+    .time-container {
+        display: flex;
+        align-items: center;
+        margin-top: -20px;
+        justify-content: space-around;
+        color: #fff;
+        font-size: 1rem;
+    }
+}
+
+
+.progress-cotainer {
+    margin: 30px auto;
+    height: 6px;
+    cursor: pointer;
+    background-color: rgb(185, 182, 182);
+    border-radius: 1rem;
+    width: 80%;
+}
+
+.progress{
+    background-color: red;
+    width: 0%;
+    height: inherit;
+    border-radius: inherit;
+}
+
+.time-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 input[type='range'] {
     -webkit-appearance: none !important;
     height: 1px;
@@ -98,12 +163,17 @@ input[type='range'] {
 input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     background: rgb(255, 255, 255);
-box-shadow: 0 0 32px 8px #e3dede7f;
+    box-shadow: 0 0 32px 8px #e3dede7f;
     border-radius:50%;
     height: 20px;
     cursor: ew-resize;
     width: 20px;
 }
+
+
+
+
+
 .block {
     margin: 10px;
     position: relative;
@@ -119,7 +189,7 @@ box-shadow: 0 0 32px 8px #e3dede7f;
     border-radius: 8px;
     left: -2.5px;
     top: -2px;
-    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,#0000ff, #00ff00, #ffff00, #ff0000);
+    background: linear-gradient(45deg, #ffffff, #0000ff, #00ff00, #ffff00, #ff0000, #ffffff,#0000ff, #00ff00, #ffff00, #ff0000);
     background-size: 300%;
     width: calc(100% + 5px);
     height: calc(100% + 4px);
